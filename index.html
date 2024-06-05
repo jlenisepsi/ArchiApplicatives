@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<form id="myForm" action="submit_form.php" method="post">
+    <label for="short_text">Enter Short Text:</label><br>
+    <input type="text" id="short_text" name="short_text"><br><br>
+
+    <label for="category">Select Category:</label><br>
+    <select id="category" name="category">
+        <option value="travail">travail</option>
+        <option value="maison">maison</option>
+        <option value="divers">divers</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<div id="taskList"></div>
+
+<script src="view.js"></script>
+<script src="model.js"></script>
+<script>
+    const formElement = document.getElementById('myForm');
+    const formHandler = new FormHandler(formElement);
+    
+    const taskView = new TaskView('taskList');
+    taskView.renderTasks(formHandler.tasks);
+</script>
+
+</body>
+</html>
